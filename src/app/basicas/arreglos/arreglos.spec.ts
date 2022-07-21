@@ -1,7 +1,7 @@
 import { obtenerRobots } from "./arreglos";
 
 
-describe('Pruebas de arreglos', () => {
+xdescribe('Pruebas de arreglos', () => {
 
     it('Debe retonar al menos 3 robots', () => {
 
@@ -10,7 +10,7 @@ describe('Pruebas de arreglos', () => {
 
     });
 
-    it('Debe de existir MegaMan y Ultron', () => {
+    xit('Debe de existir MegaMan y Ultron', () => {
 
         const resp = obtenerRobots();
         expect ( resp ).toContain('MegaMan');
