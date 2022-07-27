@@ -31,4 +31,49 @@ describe('Incremendator Component', () => {
 
     });
 
+    it( 'Debe de mostrar en el input el valor del progreso', (done) => {
+
+        component.cambiarValor(5);
+        fixture.detectChanges();
+
+        fixture.whenStable().then( () => {
+
+            const input = fixture.debugElement.query( By.css('input') );
+            const elem = input.nativeElement;
+
+            console.log(elem);
+    
+            expect( elem.value ).toBe( '55' );
+            done();
+
+        });
+
+    });
+
+    it( 'Debe de incrementar/decrementar en 5 con un click en el botón', () => {
+
+        const botones = fixture.debugElement.queryAll( By.css('.btn-primary' ) );
+
+        botones[0].triggerEventHandler( 'click', null );
+        expect( component.progreso ).toBe( 45 );
+
+        botones[1].triggerEventHandler( 'click', null );
+        expect( component.progreso ).toBe( 50 );
+
+    });
+
+    it( 'En el titulo del componente, debe mostrar el progreso', () => {
+
+        const botones = fixture.debugElement.queryAll( By.css('.btn-primary' ) );
+        botones[0].triggerEventHandler( 'click', null );
+
+        fixture.detectChanges();
+
+        const elem: HTMLElement = fixture.debugElement.query( By.css( 'h3' ) ).nativeElement;
+
+        expect( elem.innerHTML ).toContain( '45' );
+
+
+    });
+
 });
